@@ -159,8 +159,8 @@ svg {
 }
 
 .intro-section {
-  min-height: calc(100vh - 68px);
-  padding-block-start: clamp(2rem, 5vw, 4rem);
+  min-height: auto;
+  padding-block: clamp(2rem, 4vw, 3.5rem);
   display: grid;
   align-items: center;
   background:
@@ -170,26 +170,14 @@ svg {
 }
 
 .intro-grid {
-  display: grid;
-  grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr);
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
+  display: block;
 }
 
-.portrait-wrap,
 .media-panel,
 .book-cover {
   border: 1px solid var(--line);
   background: rgba(0, 0, 0, .18);
   box-shadow: var(--shadow);
-}
-
-.portrait-wrap {
-  max-width: 520px;
-}
-
-.portrait-art {
-  aspect-ratio: 26 / 31;
 }
 
 .eyebrow {
@@ -223,6 +211,44 @@ h1 {
   font-size: clamp(3rem, 7.2vw, 5.9rem);
 }
 
+.intro-copy {
+  max-width: 880px;
+}
+
+.intro-copy h1 {
+  color: var(--cream);
+  font-size: clamp(3.2rem, 7vw, 6.2rem);
+  letter-spacing: -.035em;
+  line-height: .94;
+}
+
+.terminal-command {
+  max-width: none;
+  margin-top: clamp(.8rem, 1.8vw, 1.15rem);
+  color: var(--ink-muted);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(1.35rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.terminal-caret {
+  display: inline-block;
+  width: .52em;
+  height: .12em;
+  margin-left: .08em;
+  background: var(--ochre);
+  vertical-align: .04em;
+  animation: terminal-blink 1s steps(1, end) infinite;
+}
+
+@keyframes terminal-blink {
+  0%, 46% { opacity: 1; }
+  47%, 100% { opacity: 0; }
+}
+
 h2 {
   max-width: 18ch;
   font-size: clamp(2.25rem, 5.2vw, 4.45rem);
@@ -243,6 +269,17 @@ h3 {
 .lead {
   max-width: 66ch;
   margin: 1.4rem 0 0;
+}
+
+.lead a {
+  color: var(--cream);
+  font-weight: 700;
+  text-decoration-color: var(--ochre);
+  text-decoration-thickness: 2px;
+}
+
+.lead a:hover {
+  color: #fff8df;
 }
 
 .intro-actions {
@@ -288,6 +325,32 @@ h3 {
 
 .contact-section {
   background: var(--green-dark);
+}
+
+.support-section {
+  background:
+    linear-gradient(120deg, rgba(201, 168, 94, .14), transparent 55%),
+    #1b1814;
+  border-top: 1px solid rgba(239, 226, 188, .16);
+}
+
+.support-inner {
+  max-width: 880px;
+}
+
+.support-inner h2 {
+  max-width: 17ch;
+}
+
+.support-inner p:not(.eyebrow) {
+  max-width: 64ch;
+  margin: 1.35rem 0 0;
+  color: var(--ink-muted);
+  font-size: clamp(1.05rem, 1.8vw, 1.24rem);
+}
+
+.support-inner .button {
+  margin-top: 2rem;
 }
 
 .section-heading {
@@ -434,7 +497,6 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .portrait-wrap,
   .editorial-block .media-panel,
   .editorial-block.reverse .media-panel,
   .book-cover {
@@ -447,7 +509,6 @@ h3 {
     order: 1;
   }
 
-  .portrait-wrap,
   .book-cover {
     max-width: 420px;
     justify-self: center;
@@ -464,6 +525,12 @@ h3 {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .terminal-caret {
+    animation: none;
+  }
+}
+
 @media (max-width: 540px) {
   :root {
     --pad: 1rem;
@@ -474,7 +541,17 @@ h3 {
   }
 
   .intro-section {
-    padding-block-start: 2rem;
+    min-height: auto;
+    padding-block: 1.35rem 2rem;
+  }
+
+  .intro-copy h1 {
+    font-size: clamp(3rem, 15vw, 4.35rem);
+  }
+
+  .terminal-command {
+    margin-top: .65rem;
+    font-size: clamp(1.25rem, 6vw, 1.65rem);
   }
 
   h1 {
