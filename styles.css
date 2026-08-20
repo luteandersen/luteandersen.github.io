@@ -391,6 +391,13 @@ h3 {
   display: none;
 }
 
+.video-card,
+.video-facade,
+.video-card iframe {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .video-facade {
   position: relative;
   display: block;
@@ -641,6 +648,11 @@ h3 {
   .editorial-block.reverse,
   .book-entry {
     grid-template-columns: 1fr;
+  }
+
+  .editorial-block > *,
+  .book-entry > * {
+    min-width: 0;
   }
 
   .editorial-block .media-panel,
