@@ -26,3 +26,17 @@ window.addEventListener("keydown", (event) => {
     closeNavigation();
   }
 });
+
+document.querySelectorAll(".video-facade").forEach((facade) => {
+  facade.addEventListener("click", () => {
+    const videoId = facade.dataset.videoId;
+    const iframe = document.createElement("iframe");
+
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+    iframe.title = facade.getAttribute("aria-label");
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+
+    facade.replaceWith(iframe);
+  });
+});
